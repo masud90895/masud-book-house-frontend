@@ -6,7 +6,11 @@ import Swal from "sweetalert2";
 import { useRegistrationMutation } from "../Redux/features/auth/authApi";
 
 const Registration = () => {
-  const { register, handleSubmit } = useForm<IReg>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IReg>();
 
   const [signup] = useRegistrationMutation();
 
@@ -30,7 +34,7 @@ const Registration = () => {
         <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
           <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
             <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
-              Sign up to MRM Book Store
+              Sign up to MRM Store
             </h2>
             <p className="mt-2 text-base text-gray-600">
               Already have an account?{" "}
@@ -65,6 +69,11 @@ const Registration = () => {
                     />
                   </div>
                 </div>
+                {errors?.name && (
+                  <span className="text-red-500 text-[12px]">
+                    Name field is required
+                  </span>
+                )}
                 <div>
                   <label
                     htmlFor=""
@@ -81,6 +90,11 @@ const Registration = () => {
                     />
                   </div>
                 </div>
+                {errors?.email && (
+                  <span className="text-red-500 text-[12px]">
+                    Email field is required
+                  </span>
+                )}
                 <div>
                   <label
                     htmlFor=""
@@ -97,6 +111,11 @@ const Registration = () => {
                     />
                   </div>
                 </div>
+                {errors?.password && (
+                  <span className="text-red-500 text-[12px]">
+                    Password field is required
+                  </span>
+                )}
                 <div className="flex items-center">
                   <input
                     type="checkbox"
