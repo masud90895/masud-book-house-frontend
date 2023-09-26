@@ -21,7 +21,7 @@ const Review = ({ review }: IReviewProps) => {
               <img src={pic} alt="" className="w-10 h-10 rounded-full" />
             )}
 
-            <p>{review?.name ? review?.name : "salim Al Sazu"}</p>
+            <p>{review?.name ? review?.name : "No Name Found"}</p>
           </div>
           <div className="flex flex-col justify-center items-start mt-2">
             <p>{review?.description}</p>

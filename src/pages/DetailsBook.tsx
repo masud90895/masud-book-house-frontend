@@ -89,6 +89,13 @@ const DetailsBook = () => {
     deleteBook(id);
     window.alert(`Are you sure you want delete ${details.title}`);
     navigate("/books");
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "You Deleted this book",
+      showConfirmButton: false,
+      timer: 500,
+    });
   };
 
   const [addWishList, { isSuccess, isError: wishError }] = useAddWishMutation();
@@ -158,7 +165,7 @@ const DetailsBook = () => {
     <div className="mx-20">
       <DetailsBooksPage
         details={details}
-        user={user}
+        user={user?.user}
         handleDeleteBook={handleDeleteBook}
         addWish={addWish}
         addRead={addRead}
@@ -169,10 +176,10 @@ const DetailsBook = () => {
       </div>
       {gettingReviews}
       <div>
-        <div className="border border-gray-400 relative h-32 mt-10">
+        <div className="border border-gray-400 relative h-32 my-10 rounded-lg">
           <form onSubmit={handleSubmit(postMyReview)}>
             <textarea
-              className="w-full h-32 p-2"
+              className="w-full h-32 p-2 border rounded-lg mb-2 "
               placeholder="Write your comment in here..."
               {...register("description")}
             />

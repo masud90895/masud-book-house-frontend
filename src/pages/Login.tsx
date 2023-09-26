@@ -13,7 +13,7 @@ const Login = () => {
     formState: { errors },
   } = useForm<ILog>();
 
-  console.log("🚀 ~ file: Login.tsx:14 ~ Login ~ errors:", errors);
+ 
   const [login, { data, isError }] = useLoginMutation();
 
   //navigate for private route & others
@@ -101,9 +101,9 @@ const Login = () => {
                   </div>
 
                   {errors?.email && (
-                    <span className="text-red-500">
+                    <p className="text-red-500 text-[12px]">
                       Email field is required
-                    </span>
+                    </p>
                   )}
                   <div>
                     <div className="flex items-center justify-between">
@@ -147,9 +147,9 @@ const Login = () => {
                     </div>
 
                     {errors?.password && (
-                      <span className="text-red-500">
+                      <p className="text-red-500 text-[12px]">
                         Password field is required
-                      </span>
+                      </p>
                     )}
                   </div>
                   {/* <div>
@@ -158,10 +158,10 @@ const Login = () => {
                     )}
                   </div> */}
                   <div>{manualError}</div>
-                  <div className="bg-red-600 text-white text-center">
+                  <div className="bg-blue-600 text-white text-center">
                     <button
                       type="submit"
-                      className="bg-red-500 text-white px-10 py-2 text-center"
+                      className="bg-blue-500 text-white px-10 py-2 text-center"
                     >
                       Log in
                     </button>
@@ -172,7 +172,7 @@ const Login = () => {
                       <Link
                         to="/registration"
                         title=""
-                        className="font-medium text-orange-500 transition-all duration-200 hover:text-orange-600 hover:underline"
+                        className="font-medium text-blue-500 transition-all duration-200 hover:text-blue-600 hover:underline"
                       >
                         Create a free account
                       </Link>

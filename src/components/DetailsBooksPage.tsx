@@ -24,6 +24,7 @@ const DetailsBooksPage = ({
   addWish,
   addRead,
 }: IDetailes) => {
+ 
   return (
     <section className="flex justify-center my-10 lg:mx-10 ">
       <div>
