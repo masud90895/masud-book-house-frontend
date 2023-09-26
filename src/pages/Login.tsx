@@ -138,9 +138,19 @@ const Login = () => {
                         type="password"
                         placeholder="Enter your password"
                         {...register("password", { required: true })}
-                        className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                        className={`block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border  rounded-md focus:outline-none  caret-blue-600 ${
+                          errors?.password
+                            ? " border-red-600 focus:border-red-600"
+                            : "border-gray-200 focus:border-blue-600"
+                        }}`}
                       />
                     </div>
+
+                    {errors?.password && (
+                      <span className="text-red-500">
+                        Password field is required
+                      </span>
+                    )}
                   </div>
                   {/* <div>
                     {isError && (
