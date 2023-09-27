@@ -1,4 +1,3 @@
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ILog } from "../Interface/login";
@@ -8,8 +7,13 @@ import { useLoginMutation } from "../Redux/features/auth/authApi";
 
 const Login = () => {
   // const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm<ILog>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILog>();
 
+  console.log("🚀 ~ file: Login.tsx:14 ~ Login ~ errors:", errors);
   const [login, { data, isError }] = useLoginMutation();
 
   //navigate for private route & others
@@ -50,7 +54,7 @@ const Login = () => {
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
-            Welcome To MRM Book Store!
+            Welcome To MRM Store
           </h2>
           <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600">
             Login to your account
@@ -87,10 +91,20 @@ const Login = () => {
                         type="email"
                         placeholder="Enter email to get started"
                         {...register("email", { required: true })}
-                        className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                        className={`block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border  rounded-md focus:outline-none  caret-blue-600 ${
+                          errors?.email
+                            ? " border-red-600 focus:border-red-600"
+                            : "border-gray-200 focus:border-blue-600"
+                        }`}
                       />
                     </div>
                   </div>
+
+                  {errors?.email && (
+                    <span className="text-red-500">
+                      Email field is required
+                    </span>
+                  )}
                   <div>
                     <div className="flex items-center justify-between">
                       <label
