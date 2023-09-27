@@ -64,7 +64,7 @@ const AddNewBook = () => {
                 type="text"
                 id="title"
                 placeholder="Enter your Book Title"
-                {...register("title")}
+                {...register("title", { required: true })}
                 className="block w-full p-2 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white"
               />
             </div>
