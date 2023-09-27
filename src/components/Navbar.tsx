@@ -26,9 +26,9 @@ const Navbar = () => {
         {/* lg+ */}
         <nav className="flex items-center justify-between h-16 lg:h-20">
           <div className="flex-shrink-0">
-            <a href="#" title="" className="flex">
+            <Link to={'/'} title="" className="flex">
               <p className="text-white text-lg font-semibold">MRM Store</p>
-            </a>
+            </Link>
           </div>
           <button
             onClick={() => setIsNavbar(!isNavbar)}
@@ -128,7 +128,7 @@ const Navbar = () => {
         </nav>
         {/* xs to lg */}
         {isNavbar && (
-          <nav className="min-h-screen px-4 py-10 text-center bg-black md:hidden">
+          <nav className=" px-4 py-10 text-center bg-gray-600 md:hidden ">
             <button
               onClick={() => setIsNavbar(!isNavbar)}
               type="button"
