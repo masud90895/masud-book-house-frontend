@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import { IUser, RootState } from "../Interface/login";
 import { userLoggedOut } from "../Redux/features/auth/authSlice";
 import { useAppSelector } from "../Redux/hook";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isNavbar, setIsNavbar] = useState(false);
   const user: IUser | null | undefined = useAppSelector(
     (state: RootState) => state.auth
   );
@@ -29,6 +31,7 @@ const Navbar = () => {
             </a>
           </div>
           <button
+            onClick={() => setIsNavbar(!isNavbar)}
             type="button"
             className="inline-flex p-2 text-white transition-all duration-200 rounded-md md:hidden focus:bg-gray-800 hover:bg-gray-800"
           >
@@ -124,61 +127,64 @@ const Navbar = () => {
           </div>
         </nav>
         {/* xs to lg */}
-        <nav className="min-h-screen px-4 py-10 text-center bg-black md:hidden">
-          <button
-            type="button"
-            className="inline-flex p-2 text-white transition-all duration-200 rounded-md focus:bg-gray-800 hover:bg-gray-800"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+        {isNavbar && (
+          <nav className="min-h-screen px-4 py-10 text-center bg-black md:hidden">
+            <button
+              onClick={() => setIsNavbar(!isNavbar)}
+              type="button"
+              className="inline-flex p-2 text-white transition-all duration-200 rounded-md focus:bg-gray-800 hover:bg-gray-800"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-          <nav className="flex flex-col items-center mt-10 space-y-2">
-            <a
-              href="#"
-              title=""
-              className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
-            >
-              {" "}
-              Home{" "}
-            </a>
-            <Link
-              to="/books"
-              title=""
-              className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
-            >
-              {" "}
-              All Books{" "}
-            </Link>
-            <a
-              href="#"
-              title=""
-              className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
-            >
-              {" "}
-              About{" "}
-            </a>
-            <a
-              href="#"
-              title=""
-              className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
-            >
-              {" "}
-              Sign In{" "}
-            </a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <nav className="flex flex-col items-center mt-10 space-y-2">
+              <a
+                href="#"
+                title=""
+                className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
+              >
+                {" "}
+                Home{" "}
+              </a>
+              <Link
+                to="/books"
+                title=""
+                className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
+              >
+                {" "}
+                All Books{" "}
+              </Link>
+              <a
+                href="#"
+                title=""
+                className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
+              >
+                {" "}
+                About{" "}
+              </a>
+              <a
+                href="#"
+                title=""
+                className="py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"
+              >
+                {" "}
+                Sign In{" "}
+              </a>
+            </nav>
           </nav>
-        </nav>
+        )}
       </div>
     </header>
   );
