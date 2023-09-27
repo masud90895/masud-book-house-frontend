@@ -31,12 +31,13 @@ const Books = () => {
     ));
   }
 
-  const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const filterName = e.target.name;
-    const filterValue = e.target.value;
-    if (filterValue) setFilterText({ filterName, filterValue });
-    if (!filterValue) setFilterText({ filterName: "", filterValue: "" });
-  };
+
+    const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const filterName = e.target.name;
+      const filterValue = e.target.value;
+      if (filterValue) setFilterText({ filterName, filterValue });
+      if (!filterValue) setFilterText({ filterName: "", filterValue: "" });
+    };
 
   return (
     <section className="px-[15px] lg:px-0 py-16 font-inter mt-[60px] bg-[#f6f6f7]">
